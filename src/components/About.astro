@@ -1,0 +1,42 @@
+---
+import Button from "./Button.astro";
+import ContentHeader from "./ContentHeader.astro";
+import about from "../assets/images/about/about.jpg";
+---
+
+<section id="about" class="flex flex-col">
+    <div
+        class="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-18 items-center justify-center"
+    >
+        <div>
+            <ContentHeader text="About me" />
+            <p class="text-lg md:text-xl leading-6 text-justify my-2.5">Lorem ipsum dolor sit amet consectetur adipisicing Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis distinctio reiciendis hic quasi temporibus, animi, eius eum laborum laboriosam repudiandae quia est nesciunt vero excepturi sit placeat amet, eveniet soluta?</p>
+            <p class="text-lg md:text-xl leading-6 text-justify my-2.5">Lorem ipsum dolor sit amet consectetur adipisicing elit</p>
+            <p class="text-lg md:text-xl leading-6 text-justify my-2.5">
+                Lorem ipsum dolor sit amet consectetur adipisicing explicabo
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                Impedit illum mollitia sunt ratione ducimus illo dolorum vero
+                dolores, molestiae harum. Fugiat fugit quis natus alias quod
+                eius eum debitis culpa!
+            </p>
+            <div class="py-7 text-center">
+                <Button text="Cooperation" />
+            </div>
+        </div>
+
+        <div>
+            <img
+                src={about.src}
+                alt="about"
+                class="w-[clamp(500px,30vw,650px)]
+          max-h-100
+          object-cover
+          justify-self-center
+          md:w-[clamp(500px,30vw,650px)]
+          w-full
+          md:h-auto
+          h-[410px]"
+            />
+        </div>
+    </div>
+</section>

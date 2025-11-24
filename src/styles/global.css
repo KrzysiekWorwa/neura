@@ -13,4 +13,6 @@ html {
 
 body {
     background-color: #FBFBFE;
+    margin: 0 auto;
+    overflow-x: hidden;
 }

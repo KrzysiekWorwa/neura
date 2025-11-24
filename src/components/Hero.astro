@@ -1,17 +1,29 @@
 ---
 import "../styles/global.css";
+import Button from "./Button.astro";
 ---
 
-<section id="home" class="max-w-7xl mx-auto px-6 md:px-12">
-  <div class="relative pt-30 md:pt-50 ml-auto">
+<section id="home" class="max-w-7xl mx-auto md:px-12">
+  <div class="relative pt-30 md:pt-50 ml-auto pb-7 md:pb-20">
     <div class="text-center mx-auto">
-      <h1 class="text-gray-900 text-balance font-bold text-5xl md:text-6xl xl:text-7xl">
+      <h1
+        class="text-gray-900 text-balance font-bold text-5xl md:text-6xl xl:text-7xl"
+      >
         Welcome to Neura
       </h1>
 
-      <p class="text-black mt-5 prose max-w-none mx-auto">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce quis diam eu felis facilisis mollis. Sed elementum erat libero, vitae suscipit turpis ultrices eget.
+      <p class="text-lg md:text-xl text-black mt-5 prose max-w-none mx-auto">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce quis diam
+        eu felis facilisis mollis. Sed elementum erat libero, vitae suscipit
+        turpis ultrices eget. Lorem ipsum dolor sit amet consectetur adipisicing
+        elit. Ad, dicta eos tempore aut nulla explicabo quaerat nihil soluta
+        eveniet ipsa. Accusamus unde doloribus voluptatibus non neque deserunt
+        nemo cum nisi!
       </p>
+    </div>
+    <div class="mt-7 flex flex-wrap justify-center gap-y-4 gap-x-6">
+      <Button text="Get started" href="#about" />
+      <Button text="Contact" />
     </div>
   </div>
 </section>

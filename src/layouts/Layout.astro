@@ -17,8 +17,9 @@ import Header from "../components/Header.astro";
 	</head>
 	<body>
 		<Header />
-		<slot />
-
+		<div class="m-auto px-5 md:px-15 max-w-[1440px]">
+			<slot />
+		</div>
 		<script>
 			import "../scripts/menu.js";
 		</script>
