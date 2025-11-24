@@ -1,0 +1,34 @@
+---
+import Button from "./Button.astro"
+---
+
+<div
+    id="main-menu"
+    class="fixed top-0 left-0 w-full md:h-[90px] md:bg-black/30 md:backdrop-blur-xl z-50 flex text-center h-[60px] bg-white backdrop-blur-0"
+>
+    <div
+        class="w-full max-w-[1440px] mx-auto px-5 flex items-center justify-between gap-5"
+    >
+        <a
+            href="#home"
+            class="text-4xl md:text-5xl tracking-tighter hover:text-white transition-colors duration-300 ease"
+            >Neura</a
+        >
+
+        <div class="md:flex md:gap-7 md:ml-5 md:items-center hidden">
+            <a
+                href="#home"
+                class="text-xl hover:text-white transition-colors duration-300 ease"
+                >Home</a
+            >
+            <a
+                href="#about"
+                class="text-xl hover:text-white transition-colors duration-300 ease"
+                >About</a
+            >
+        </div>
+        <div>
+            <Button text="Contact"/>
+        </div>
+    </div>
+</div>
