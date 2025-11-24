@@ -1,5 +1,6 @@
 ---
-import Button from "./Button.astro"
+import BurgerButton from "./BurgerButton.astro";
+import Button from "./Button.astro";
 ---
 
 <div
@@ -27,8 +28,9 @@ import Button from "./Button.astro"
                 >About</a
             >
         </div>
-        <div>
-            <Button text="Contact"/>
+        <div class="md:block hidden">
+            <Button text="Contact" />
         </div>
+        <BurgerButton />
     </div>
 </div>

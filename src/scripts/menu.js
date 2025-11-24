@@ -1,6 +1,14 @@
-const menu = document.querySelector(`.menu`);
+document.addEventListener("DOMContentLoaded", () => {
+    const burger = document.querySelector(".burger-menu");
+    const mobileMenu = document.getElementById("mobile-menu");
 
-menu?.addEventListener(`click`, () => {
-    const isExpanded = menu?.getAttribute(`aria-expanded`) === `true`;
-    menu.setAttribute(`aria-expanded`, `${!isExpanded}`);
+    if (!burger || !mobileMenu) return;
+
+    burger.addEventListener("click", () => {
+        const isOpen = burger.getAttribute("aria-expanded") === "true";
+
+        burger.setAttribute("aria-expanded", String(!isOpen));
+
+        mobileMenu.classList.toggle("hidden");
+    });
 });
