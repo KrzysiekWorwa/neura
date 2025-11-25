@@ -1,19 +1,25 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
-
 import tailwindcss from '@tailwindcss/vite';
-
 import react from '@astrojs/react';
 import markdoc from '@astrojs/markdoc';
-import keystatic from '@keystatic/astro'
+import keystatic from '@keystatic/astro';
 
-// https://astro.build/config
 export default defineConfig({
-  site: `https://krzysiekworwa.github.io/neura/`,
-  base: `/neura/`,
+  site: 'https://krzysiekworwa.github.io/neura/',
+  base: '/neura/',
+  output: 'static', // konieczne dla GitHub Pages
   vite: {
     plugins: [tailwindcss()]
   },
-
-  integrations: [react(), markdoc(), keystatic()]
+  integrations: [
+    react(),
+    markdoc(),
+    keystatic({
+      storage: {
+        kind: 'github',
+        repo: 'krzysiekworwa/neura'
+      }
+    })
+  ]
 });
