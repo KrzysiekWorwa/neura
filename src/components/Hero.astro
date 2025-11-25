@@ -4,6 +4,15 @@ import Button from "./Button.astro";
 ---
 
 <section id="home" class="max-w-7xl mx-auto md:px-12">
+          <div class="absolute top-0 left-0 w-full overflow-hidden">
+        <svg class="relative block w-[calc(100%+1.3px)] h-[50px] md:h-20"
+             xmlns="http://www.w3.org/2000/svg"
+             viewBox="0 0 1200 120"
+             preserveAspectRatio="none">
+            <path d="M1200 120L0 16.48 0 0 1200 0 1200 120z"
+                  class="fill-[#181a17]"></path>
+        </svg>
+    </div>
   <div class="relative pt-30 md:pt-50 ml-auto pb-7 md:pb-10">
     <div class="text-center mx-auto">
       <h1
@@ -23,7 +32,7 @@ import Button from "./Button.astro";
     </div>
     <div class="mt-7 flex flex-wrap justify-center gap-y-4 gap-x-6">
       <Button text="Get started" href="#about" />
-      <Button text="Contact" />
+      <Button text="Cooperation" href="#cooperation"/>
     </div>
   </div>
 </section>
