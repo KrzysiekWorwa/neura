@@ -14,11 +14,8 @@ export default config({
       format: { contentField: 'content' },
       schema: {
         title: fields.slug({ name: { label: 'Title' } }),
-        content: fields.markdoc({
-          label: 'Content',
-        }),
+        content: fields.markdoc({ label: 'Content' }),
       },
     }),
   },
 });
-
