@@ -9,6 +9,8 @@ import keystatic from '@keystatic/astro'
 
 // https://astro.build/config
 export default defineConfig({
+  site: `https://krzysiekworwa.github.io/neura/`,
+  base: `/neura/`,
   vite: {
     plugins: [tailwindcss()]
   },
