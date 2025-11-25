@@ -5,7 +5,7 @@ import about from "../assets/images/about/about.jpg";
 ---
 
 <section id="about" class="relative bg-[#181a17] pt-15 md:pt-40">
-        <div class="absolute top-0 left-0 w-full overflow-hidden leading-[0]">
+        <div class="absolute top-0 left-0 w-full overflow-hidden">
         <svg class="relative block w-[calc(100%+1.3px)] h-[50px] md:h-32"
              xmlns="http://www.w3.org/2000/svg"
              viewBox="0 0 1200 120"
@@ -15,7 +15,7 @@ import about from "../assets/images/about/about.jpg";
         </svg>
     </div>
     <div
-        class="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-18 items-center justify-center m-auto pb-10 px-5 md:px-15 max-w-[1440px]"
+        class="grid grid-cols-1 gap-4 lg:grid-cols-2 lg:gap-18 items-center justify-center m-auto pb-10 px-5 lg:px-15 max-w-[1440px]"
     >
         <div class="text-white">
             <ContentHeader text="About me"/>
@@ -37,14 +37,11 @@ import about from "../assets/images/about/about.jpg";
             <img
                 src={about.src}
                 alt="about"
-                class="w-[clamp(500px,30vw,650px)]
-          max-h-100
+                class="
           object-cover
           justify-self-center
-          md:w-[clamp(500px,30vw,650px)]
           w-full
-          md:h-auto
-          h-[410px]"
+          lg:h-auto"
             />
         </div>
     </div>
