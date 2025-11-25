@@ -1,0 +1,42 @@
+---
+import Button from "./Button.astro";
+import ContentHeader from "./ContentHeader.astro";
+import about from "../assets/images/cooperation/cooperation.jpg";
+---
+
+<section id="cooperation" class="bg-[#181a17] md:pt-15">
+    <div
+        class="grid grid-cols-1 gap-4 lg:grid-cols-2 lg:gap-18 items-center justify-center m-auto pb-10 px-5 lg:px-15 max-w-[1440px]"
+    >
+        <div class="order-2 lg:order-1">
+            <img
+                src={about.src}
+                alt="about"
+                class="object-cover
+          justify-self-center
+          w-full
+          lg:h-auto"
+            />
+        </div>
+        <div class="text-white order-1 lg:order-2">
+            <ContentHeader text="Cooperation" />
+            <p class="text-lg md:text-xl leading-6 text-justify my-2.5">
+                Lorem ipsum dolor sit amet consectetur adipisicing Lorem ipsum
+                dolor sit amet consectetur adipisicing elit. Debitis distinctio
+                reiciendis hic quasi temporibus, animi, eius eum laborum
+                laboriosam repudiandae quia est nesciunt vero excepturi sit
+                placeat amet, eveniet soluta?
+            </p>
+            <p class="text-lg md:text-xl leading-6 text-justify my-2.5">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit
+            </p>
+            <p class="text-lg md:text-xl leading-6 text-justify my-2.5">
+                Lorem ipsum dolor sit amet consectetur adipisicing explicabo
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                Impedit illum mollitia sunt ratione ducimus illo dolorum vero
+                dolores, molestiae harum. Fugiat fugit quis natus alias quod
+                eius eum debitis culpa!
+            </p>
+        </div>
+    </div>
+</section>
