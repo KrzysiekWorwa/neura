@@ -15,11 +15,6 @@ export default defineConfig({
   integrations: [
     react(),
     markdoc(),
-    keystatic({
-      storage: {
-        kind: 'github',
-        repo: 'krzysiekworwa/neura'
-      }
-    })
+    keystatic()
   ]
 });
