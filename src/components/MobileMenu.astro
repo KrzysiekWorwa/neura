@@ -1,10 +1,23 @@
+---
+import { getEntry } from "astro:content";
+
+const menu = await getEntry("menu", "index");
+if (!menu) throw new Error("Menu config not found");
+---
+
 <div
     id="mobile-menu"
     class="hidden fixed top-[60px] w-full flex-col bg-white px-6 py-1 gap-4 md:hidden z-50 justify-items-center"
 >
-    <a href="#home" class="py-1 block text-xl">Home</a>
-    <a href="#about" class="py-1 block text-xl">About</a>
-    <a href="#cooperation" class="py-1 block text-xl">Cooperation</a>
-    <a href="#offer" class="py-1 block text-xl">Offer</a>
-    <a href="#contact" class="py-1 block text-xl">Contact</a>
+  {menu.data.items.map((item) => (
+    <a href={item.href} class="py-1 block text-xl">
+      {item.label}
+    </a>
+  ))}
+
+  {menu.data.contact && (
+    <a href={menu.data.contact.href} class="py-1 block text-xl">
+      {menu.data.contact.label}
+    </a>
+  )}
 </div>

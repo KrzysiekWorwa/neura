@@ -1,6 +1,10 @@
 ---
 import BurgerButton from "./BurgerButton.astro";
 import ContactButton from "./ContactButton.astro";
+import { getEntry } from "astro:content";
+
+const menu = await getEntry("menu", "index");
+if (!menu) throw new Error("Menu config not found");
 ---
 
 <div
@@ -11,36 +15,33 @@ import ContactButton from "./ContactButton.astro";
         class="w-full max-w-[1440px] mx-auto px-5 flex items-center justify-between gap-5"
     >
         <a
-            href="#home"
+            href={menu.data.items?.[0]?.href ?? "#home"}
             class="text-black md:text-white text-4xl md:text-5xl tracking-tighter hover:text-blue-300 transition-colors duration-300 ease"
-            >Neura</a
         >
-
+            {menu.data.brand}
+        </a>
         <div class="md:flex md:gap-7 md:ml-5 md:items-center hidden">
-            <a
-                href="#home"
-                class="text-white text-xl hover:text-blue-300 transition-colors duration-300 ease"
-                >Home</a
-            >
-            <a
-                href="#about"
-                class="text-white text-xl hover:text-blue-300 transition-colors duration-300 ease"
-                >About</a
-            >
-            <a
-                href="#cooperation"
-                class="text-white text-xl hover:text-blue-300 transition-colors duration-300 ease"
-                >Cooperation</a
-            >
-            <a
-                href="#offer"
-                class="text-white text-xl hover:text-blue-300 transition-colors duration-300 ease"
-                >Offer</a
-            >
+            {
+                menu.data.items.map((item) => (
+                    <a
+                        href={item.href}
+                        class="text-white text-xl hover:text-blue-300 transition-colors duration-300 ease"
+                    >
+                        {item.label}
+                    </a>
+                ))
+            }
         </div>
-        <div class="md:block hidden">
-            <ContactButton text="Contact" href="#contact" />
-        </div>
+        {
+            menu.data.contact && (
+                <div class="md:block hidden">
+                    <ContactButton
+                        text={menu.data.contact.label}
+                        href={menu.data.contact.href}
+                    />
+                </div>
+            )
+        }
         <BurgerButton />
     </div>
 </div>

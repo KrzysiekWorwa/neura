@@ -53,6 +53,18 @@ const offerCollection = defineCollection({
     }),
 });
 
+const menuCollection = defineCollection({
+    type: "content",
+    schema: z.object({
+        brand: z.string(),
+        items: z.array(z.object({ label: z.string(), href: z.string() })),
+        contact: z.object({
+            label: z.string(),
+            href: z.string()
+        }).optional(),
+    }),
+});
+
 const footerCollection = defineCollection({
     type: "content",
     schema: z.object({
@@ -69,5 +81,6 @@ export const collections = {
     about: aboutCollection,
     cooperation: cooperationCollection,
     offer: offerCollection,
+    menu: menuCollection,
     footer: footerCollection,
 };
