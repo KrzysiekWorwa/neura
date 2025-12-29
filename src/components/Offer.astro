@@ -1,5 +1,9 @@
 ---
+import { getEntry } from "astro:content";
 import ContentHeader from "./ContentHeader.astro";
+
+const offer = await getEntry("offer", "index");
+if (!offer) throw new Error("Offer page not found");
 ---
 
 <section id="offer" class="relative bg-[#FBFBFE] pt-10 md:pt-25">
@@ -17,82 +21,20 @@ import ContentHeader from "./ContentHeader.astro";
     </div>
     <div class="max-w-[1440px] m-auto pt-5 md:pt-10 px-5 lg:px-15">
         <div class="text-center pb-5">
-            <ContentHeader text="Offer" />
+            <ContentHeader text={offer.data.title} />
             <ul
                 class="grid grid-cols-1 gap-6 m-6 list-none p-0 lg:grid-cols-3 lg:gap-8 lg:my-8 lg:mx-0 place-items-center"
             >
-                <li
-                    class="flex flex-col items-center gap-5 m-0 max-w-2xl lg:max-w-max"
-                >
-                    <h3 class="font-semibold text-2xl m-0">Name</h3>
-                    <p class="text-lg m-0">
-                        Lorem ipsum dolor sit amet consectetur, adipisicing
-                        elit. Temporibus laborum saepe, illo modi cupiditate
-                        officia quidem, hic ratione aspernatur repellat, eos
-                        distinctio! Temporibus voluptates culpa fuga voluptatem
-                        eius doloribus corporis?
-                    </p>
-                </li>
-                <li
-                    class="flex flex-col items-center gap-5 m-0 max-w-2xl lg:max-w-max"
-                >
-                    <h3 class="font-semibold text-2xl m-0">Name</h3>
-                    <p class="text-lg m-0">
-                        Lorem ipsum dolor sit amet consectetur, adipisicing
-                        elit. Temporibus laborum saepe, illo modi cupiditate
-                        officia quidem, hic ratione aspernatur repellat, eos
-                        distinctio! Temporibus voluptates culpa fuga voluptatem
-                        eius doloribus corporis?
-                    </p>
-                </li>
-                <li
-                    class="flex flex-col items-center gap-5 m-0 max-w-2xl lg:max-w-max"
-                >
-                    <h3 class="font-semibold text-2xl m-0">Name</h3>
-                    <p class="text-lg m-0">
-                        Lorem ipsum dolor sit amet consectetur, adipisicing
-                        elit. Temporibus laborum saepe, illo modi cupiditate
-                        officia quidem, hic ratione aspernatur repellat, eos
-                        distinctio! Temporibus voluptates culpa fuga voluptatem
-                        eius doloribus corporis?
-                    </p>
-                </li>
-                <li
-                    class="flex flex-col items-center gap-5 m-0 max-w-2xl lg:max-w-max"
-                >
-                    <h3 class="font-semibold text-2xl m-0">Name</h3>
-                    <p class="text-lg m-0">
-                        Lorem ipsum dolor sit amet consectetur, adipisicing
-                        elit. Temporibus laborum saepe, illo modi cupiditate
-                        officia quidem, hic ratione aspernatur repellat, eos
-                        distinctio! Temporibus voluptates culpa fuga voluptatem
-                        eius doloribus corporis?
-                    </p>
-                </li>
-                <li
-                    class="flex flex-col items-center gap-5 m-0 max-w-2xl lg:max-w-max"
-                >
-                    <h3 class="font-semibold text-2xl m-0">Name</h3>
-                    <p class="text-lg m-0">
-                        Lorem ipsum dolor sit amet consectetur, adipisicing
-                        elit. Temporibus laborum saepe, illo modi cupiditate
-                        officia quidem, hic ratione aspernatur repellat, eos
-                        distinctio! Temporibus voluptates culpa fuga voluptatem
-                        eius doloribus corporis?
-                    </p>
-                </li>
-                <li
-                    class="flex flex-col items-center gap-5 m-0 max-w-2xl lg:max-w-max"
-                >
-                    <h3 class="font-semibold text-2xl m-0">Name</h3>
-                    <p class="text-lg m-0">
-                        Lorem ipsum dolor sit amet consectetur, adipisicing
-                        elit. Temporibus laborum saepe, illo modi cupiditate
-                        officia quidem, hic ratione aspernatur repellat, eos
-                        distinctio! Temporibus voluptates culpa fuga voluptatem
-                        eius doloribus corporis?
-                    </p>
-                </li>
+                {
+                    offer.data.items.map((item) => (
+                        <li class="flex flex-col items-center gap-5 m-0 max-w-2xl lg:max-w-max">
+                            <h3 class="font-semibold text-2xl m-0">
+                                {item.name}
+                            </h3>
+                            <p class="text-lg m-0">{item.description}</p>
+                        </li>
+                    ))
+                }
             </ul>
         </div>
     </div>

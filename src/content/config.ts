@@ -40,6 +40,19 @@ const cooperationCollection = defineCollection({
         }),
 });
 
+const offerCollection = defineCollection({
+    type: "content",
+    schema: z.object({
+        title: z.string(),
+        items: z.array(
+            z.object({
+                name: z.string(),
+                description: z.string(),
+            })
+        ),
+    }),
+});
+
 const footerCollection = defineCollection({
     type: "content",
     schema: z.object({
@@ -55,5 +68,6 @@ export const collections = {
     hero: heroCollection,
     about: aboutCollection,
     cooperation: cooperationCollection,
+    offer: offerCollection,
     footer: footerCollection,
 };
