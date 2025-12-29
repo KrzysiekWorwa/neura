@@ -1,48 +1,60 @@
 ---
+import { Picture } from "astro:assets";
 import Button from "./Button.astro";
 import ContentHeader from "./ContentHeader.astro";
-import about from "../assets/images/about/about.jpg";
+import { getEntry, render } from "astro:content";
+
+const about = await getEntry("about", "index");
+if (!about) throw new Error("About page not found");
+
+const { Content } = await render(about);
 ---
 
 <section id="about" class="relative bg-[#181a17] pt-15 md:pt-40">
-        <div class="absolute top-0 left-0 w-full overflow-hidden">
-        <svg class="relative block w-[calc(100%+1.3px)] h-[50px] md:h-32"
-             xmlns="http://www.w3.org/2000/svg"
-             viewBox="0 0 1200 120"
-             preserveAspectRatio="none">
-            <path d="M1200 120L0 16.48 0 0 1200 0 1200 120z"
-                  class="fill-[#FBFBFE]"></path>
+    <div class="absolute top-0 left-0 w-full overflow-hidden">
+        <svg
+            class="relative block w-[calc(100%+1.3px)] h-[50px] md:h-32"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 1200 120"
+            preserveAspectRatio="none"
+        >
+            <path
+                d="M1200 120L0 16.48 0 0 1200 0 1200 120z"
+                class="fill-[#FBFBFE]"></path>
         </svg>
     </div>
+
     <div
         class="grid grid-cols-1 gap-4 lg:grid-cols-2 lg:gap-18 items-center justify-center m-auto pb-5 px-5 lg:px-15 max-w-[1440px]"
     >
         <div class="text-white">
-            <ContentHeader text="About me"/>
-            <p class="text-lg md:text-xl leading-6 text-justify my-2.5">Lorem ipsum dolor sit amet consectetur adipisicing Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis distinctio reiciendis hic quasi temporibus, animi, eius eum laborum laboriosam repudiandae quia est nesciunt vero excepturi sit placeat amet, eveniet soluta?</p>
-            <p class="text-lg md:text-xl leading-6 text-justify my-2.5">Lorem ipsum dolor sit amet consectetur adipisicing elit</p>
-            <p class="text-lg md:text-xl leading-6 text-justify my-2.5">
-                Lorem ipsum dolor sit amet consectetur adipisicing explicabo
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Impedit illum mollitia sunt ratione ducimus illo dolorum vero
-                dolores, molestiae harum. Fugiat fugit quis natus alias quod
-                eius eum debitis culpa!
-            </p>
+            <ContentHeader text={about.data.title} />
+
+            <div class="markdown text-lg md:text-xl leading-6 text-justify">
+                <Content />
+            </div>
+
             <div class="py-7 text-center">
-                <Button text="Cooperation" />
+                {
+                    about.data.buttons.map((button) => (
+                        <Button text={button.text} href={button.href} />
+                    ))
+                }
             </div>
         </div>
 
         <div>
-            <img
-                src={about.src}
-                alt="about"
-                class="
-          object-cover
-          justify-self-center
-          w-full
-          lg:h-auto"
+            <Picture
+                src={about.data.image}
+                alt={about.data.title}
+                class="object-cover justify-self-center w-full lg:h-auto"
             />
         </div>
     </div>
 </section>
+
+<style is:global>
+    #about .markdown p {
+        margin: 0.625rem 0;
+    }
+</style>
