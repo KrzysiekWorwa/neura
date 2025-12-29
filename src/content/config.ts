@@ -31,6 +31,15 @@ const aboutCollection = defineCollection({
         }),
 });
 
+const cooperationCollection = defineCollection({
+    type: "content",
+    schema: ({ image }) =>
+        z.object({
+            title: z.string(),
+            image: image(),
+        }),
+});
+
 const footerCollection = defineCollection({
     type: "content",
     schema: z.object({
@@ -45,5 +54,6 @@ const footerCollection = defineCollection({
 export const collections = {
     hero: heroCollection,
     about: aboutCollection,
+    cooperation: cooperationCollection,
     footer: footerCollection,
 };
