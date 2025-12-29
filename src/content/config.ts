@@ -16,6 +16,18 @@ const heroCollection = defineCollection({
         }),
 });
 
+const footerCollection = defineCollection({
+    type: "content",
+    schema: z.object({
+        title: z.string(),
+        description: z.string(),
+        email: z.string().email(),
+        phone: z.string(),
+        address: z.string().optional(),
+    }),
+});
+
 export const collections = {
     hero: heroCollection,
+    footer: footerCollection,
 };
