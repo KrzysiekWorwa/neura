@@ -5,7 +5,7 @@ import react from '@astrojs/react';
 import markdoc from '@astrojs/markdoc';
 
 export default defineConfig({
-  site: 'https://krzysiekworwa.github.io/neura/',
+  site: 'https://krzysiekworwa.github.io',
   base: '/neura/',
   output: 'static',
   vite: {
