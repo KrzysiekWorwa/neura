@@ -1,38 +1,52 @@
 ---
 import "../styles/global.css";
 import Button from "./Button.astro";
+import { getEntry, render } from "astro:content";
+
+const hero = await getEntry("hero", "index");
+if (!hero) throw new Error("Hero content not found");
+
+const { Content } = await render(hero);
 ---
 
 <section id="home" class="max-w-7xl mx-auto md:px-12">
-          <div class="absolute top-0 left-0 w-full overflow-hidden">
-        <svg class="relative block w-[calc(100%+1.3px)] h-[50px] md:h-20"
-             xmlns="http://www.w3.org/2000/svg"
-             viewBox="0 0 1200 120"
-             preserveAspectRatio="none">
-            <path d="M1200 120L0 16.48 0 0 1200 0 1200 120z"
-                  class="fill-[#181a17]"></path>
-        </svg>
-    </div>
+  <div class="absolute top-0 left-0 w-full overflow-hidden">
+    <svg
+      class="relative block w-[calc(100%+1.3px)] h-[50px] md:h-20"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 1200 120"
+      preserveAspectRatio="none"
+    >
+      <path d="M1200 120L0 16.48 0 0 1200 0 1200 120z" class="fill-[#181a17]"
+      ></path>
+    </svg>
+  </div>
+
   <div class="relative pt-30 md:pt-50 ml-auto pb-7 md:pb-10">
     <div class="text-center mx-auto">
-      <h1
-        class="text-gray-900 text-balance font-bold text-5xl md:text-6xl xl:text-7xl"
-      >
-        Welcome to Neura
+      <h1 class="text-gray-900 font-bold text-5xl md:text-6xl xl:text-7xl">
+        {hero.data.title}
       </h1>
 
-      <p class="text-lg md:text-xl text-black mt-5 prose max-w-none mx-auto">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce quis diam
-        eu felis facilisis mollis. Sed elementum erat libero, vitae suscipit
-        turpis ultrices eget. Lorem ipsum dolor sit amet consectetur adipisicing
-        elit. Ad, dicta eos tempore aut nulla explicabo quaerat nihil soluta
-        eveniet ipsa. Accusamus unde doloribus voluptatibus non neque deserunt
-        nemo cum nisi!
-      </p>
+      {
+        hero.data.subtitle && (
+          <p class="text-lg md:text-xl text-black mt-5 max-w-none mx-auto">
+            {hero.data.subtitle}
+          </p>
+        )
+      }
     </div>
+
+    <div class="text-center text-base md:text-lg text-black mt-5 max-w-none mx-auto">
+      <Content />
+    </div>
+
     <div class="mt-7 flex flex-wrap justify-center gap-y-4 gap-x-6">
-      <Button text="Get started" href="#about" />
-      <Button text="Cooperation" href="#cooperation"/>
+      {
+        hero.data.buttons.map((button) => (
+          <Button text={button.text} href={button.href} />
+        ))
+      }
     </div>
   </div>
 </section>
